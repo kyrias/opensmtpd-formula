@@ -26,8 +26,8 @@ opensmtpd_configdir:
 smtpd.conf:
     file.managed:
         - name: {{ opensmtpd.configdir }}/smtpd.conf
-        - source: salt://opensmtpd/files/smtpd.conf
-        - template: jinja
+        - source: salt://opensmtpd/files/smtpd.py
+        - template: py
         - mode: 644
         - require:
             - pkg: opensmtpd
