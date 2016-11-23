@@ -59,5 +59,7 @@ table {{ table }}:
         {%- endfor %}
         - require_in:
             - file: smtpd.conf
+        - watch_in:
+            - service: opensmtpd
     {%- endif %}
 {% endfor %}
