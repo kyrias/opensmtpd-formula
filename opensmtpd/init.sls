@@ -41,17 +41,3 @@ mailname:
         - required_in:
             - service: opensmtpd
 {% endif -%}
-
-{% for table, details in salt['pillar.get'](
-        'opensmtpd:tables', defaults['tables']).items() -%}
-    {% if 'type' in details and details.type != 'inline' -%}
-table {{ table }}:
-    file.managed: 
-        - name: {% 
-        if details.path.startswith('/') -%}
-            {{ details.path }}
-        {% else -%}
-            {{ opensmtpd.configdir }}/{{ details.path }}
-        {% endif -%}
-    {%- endif %}
-{%- endfor %}
