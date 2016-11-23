@@ -10,7 +10,7 @@ def generate_pkis(defaults):
 
     for host, details in pkis.items():
         for key, value in details.items():
-            lines.append('pki {} {} {}'.format(host, key, value))
+            lines.append('pki {} {} "{}"'.format(host, key, value))
 
     lines.append('')
     return lines
