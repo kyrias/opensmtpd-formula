@@ -56,6 +56,8 @@ table {{ table }}:
         - contents: |
         {%- for line in details.contents %}
             {{ line }}
-        {%- endfor -%}
+        {%- endfor %}
+        - require_in:
+            - file: smtpd.conf
     {%- endif %}
 {% endfor %}
