@@ -58,4 +58,4 @@ table {{ table }}:
             {{ line }}
         {%- endfor -%}
     {%- endif %}
-{%- endfor %}
+{% endfor %}
