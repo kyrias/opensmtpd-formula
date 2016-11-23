@@ -1,0 +1,16 @@
+pki: {}
+listeners:
+  - 'interface': 'localhost'
+tables:
+  aliases:
+    type: file
+    path: /etc/mail/aliases
+rules:
+  - local (w/ aliases) to mboxes:
+      type: accept
+      for: local alias <aliases>
+      deliver_to: mbox
+  - relay outgoing:
+      type: accept
+      for: any
+      relay: True
