@@ -24,7 +24,7 @@ Arch:
     merge=salt['grains.filter_by'](
         osmap,
         grain='os_family',
-        merge=salt['pillar.get']('postgres', {}),
+        merge=salt['pillar.get']('postgres:lookup'),
     ),
     base='opensmtpd',
 ) %}
