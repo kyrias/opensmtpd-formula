@@ -174,7 +174,30 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    raise Exception(__salt__['slsutil.renderer']('../map.jinja'))
+    final = ''
+    try:
+        __salt__['slsutil.renderer']('../map.jinja')
+    except:
+        final += ('../map failed, ')
+
+    try:
+        __salt__['slsutil.renderer']('map.jinja')
+    except:
+        final += ('map failed, ')
+
+    try:
+        __salt__['slsutil.renderer']('opensmtpd/map.jinja')
+    except:
+        final += ('opensmtpd/map failed, ')
+
+    try:
+        __salt__['slsutil.renderer']('salt://opensmtpd/map.jinja')
+    except:
+        final += ('salt://opensmtpd/map failed, ')
+
+    raise Exception(final)
+
+
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
