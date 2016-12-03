@@ -174,8 +174,7 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    __salt__._load_all()
-    raise Exception(list(__salt__))
+    raise Exception(__salt__['slsutil.renderer']('../map.jinja'))
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
