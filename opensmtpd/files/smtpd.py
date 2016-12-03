@@ -174,9 +174,7 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    defaults = __salt__.slsutil.renderer('/srv/salt/file/opensmtpd/defaults.yaml')
-    maps = __salt__.slsutil.renderer('/srv/salt/file/opensmtpd/map.jinja')
-
+    raise Exception(__grains__['opensmtpd'])
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
