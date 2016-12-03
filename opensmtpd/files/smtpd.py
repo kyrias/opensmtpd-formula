@@ -1,7 +1,5 @@
 #!py
 
-from "opensmtpd/map.jinja" import opensmtpd with context
-
 import json
 
 def generate_pkis(defaults):
