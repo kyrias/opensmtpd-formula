@@ -41,7 +41,7 @@ mailname:
             - service: opensmtpd
 {% endif -%}
 
-{% for table, details in salt['pillar.get']('opensmtpd:tables') -%}
+{% for table, details in salt['pillar.get']('opensmtpd:tables').items() -%}
     {% if 'type' in details and 'contents' in details and details.type == 'file' -%}
 table {{ table }}:
     file.managed:
