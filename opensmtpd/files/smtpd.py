@@ -1,5 +1,6 @@
 #!py
 
+import os
 import json
 
 def generate_pkis(defaults):
@@ -38,6 +39,7 @@ def generate_tables(defaults):
 
 
 def generate_listeners(defaults):
+    os.chdir('/var/cache/salt/minion/files/base/')
     lines = []
     listeners = __salt__['pillar.get']('opensmtpd:listeners')
     if not listeners:
