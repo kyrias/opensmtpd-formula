@@ -174,7 +174,7 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    raise Exception(__grains__['opensmtpd'])
+    raise Exception(__pillar__['opensmtpd'])
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
