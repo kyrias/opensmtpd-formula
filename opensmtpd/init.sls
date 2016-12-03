@@ -1,5 +1,4 @@
 {% from 'opensmtpd/map.jinja' import opensmtpd -%}
-{% import_yaml 'opensmtpd/defaults.yaml' as defaults -%}
 opensmtpd:
     pkg:
         - installed

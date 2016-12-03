@@ -1,6 +1,6 @@
 #!py
 
-{% from "opensmtpd/map.jinja" import opensmtpd with context %}
+from "opensmtpd/map.jinja" import opensmtpd with context
 
 import json
 
