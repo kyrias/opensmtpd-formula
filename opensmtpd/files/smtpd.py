@@ -176,28 +176,9 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    final = ''
-    try:
-        __salt__['slsutil.renderer']('../map.jinja')
-    except:
-        final += ('../map failed, ')
-
-    try:
-        __salt__['slsutil.renderer']('map.jinja')
-    except:
-        final += ('map failed, ')
-
-    try:
-        __salt__['slsutil.renderer']('opensmtpd/map.jinja')
-    except:
-        final += ('opensmtpd/map failed, ')
-
-    try:
-        __salt__['slsutil.renderer']('salt://opensmtpd/map.jinja')
-    except:
-        final += ('salt://opensmtpd/map failed, ')
-
-    raise Exception(final)
+    path = __salt__['cp.cache_file']('salt://opensmtpd/map.jinja')
+    rendered = __salt__['slsutil.renderer'](path)
+    raise Exception(rendered)
 
 
     lines = []
