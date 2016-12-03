@@ -1,4 +1,4 @@
-{% import 'opensmtpd/map.jinja' as opensmtpd -%}
+{% from 'opensmtpd/map.jinja' import opensmtpd -%}
 
 opensmtpd:
     pkg:
