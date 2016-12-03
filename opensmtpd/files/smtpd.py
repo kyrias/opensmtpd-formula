@@ -174,7 +174,7 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    raise Exception(__salt__['renderers.jinja'])
+    raise Exception(__salt__)
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
