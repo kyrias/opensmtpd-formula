@@ -177,9 +177,7 @@ def generate_rules(defaults):
 
 def run():
     path = __salt__['cp.cache_file']('salt://opensmtpd/map.jinja')
-    rendered = __salt__['slsutil.renderer'](path)
-    raise Exception(rendered)
-
+    defaults = __salt__['slsutil.renderer'](path)
 
     lines = []
     lines.extend(generate_pkis(defaults))
