@@ -174,7 +174,7 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    raise Exception(__pillar__['opensmtpd'])
+    raise Exception(__salt__['renderers.jinja'])
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
