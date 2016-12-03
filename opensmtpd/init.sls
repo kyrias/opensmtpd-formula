@@ -1,5 +1,5 @@
 {% from 'opensmtpd/map.jinja' import opensmtpd -%}
-{% import 'opensmtpd/defaults.yaml' as defaults -%}
+
 opensmtpd:
     pkg:
         - installed
@@ -42,8 +42,7 @@ mailname:
             - service: opensmtpd
 {% endif -%}
 
-{% for table, details in salt['pillar.get'](
-        'opensmtpd:tables', defaults['tables']).items() -%}
+{% for table, details in salt['pillar.get']('opensmtpd:tables').items() -%}
     {% if 'type' in details and 'contents' in details and details.type == 'file' -%}
 table {{ table }}:
     file.managed:

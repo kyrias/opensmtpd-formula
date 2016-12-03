@@ -1,7 +1,5 @@
 #!py
 
-import json
-
 def generate_pkis(defaults):
     lines = []
     pkis = __salt__['pillar.get']('opensmtpd:pki')
@@ -174,8 +172,8 @@ def generate_rules(defaults):
     return lines
 
 def run():
-    defaults = __salt__.slsutil.renderer('/srv/salt/file/opensmtpd/defaults.yaml')
-    maps = __salt__.slsutil.renderer('/srv/salt/file/opensmtpd/map.jinja')
+    path = __salt__['cp.cache_file']('salt://opensmtpd/map.jinja')
+    defaults = __salt__['slsutil.renderer'](path)
 
     lines = []
     lines.extend(generate_pkis(defaults))

@@ -1,24 +1,29 @@
-{% load_yaml as rawmap %}
+{% import_yaml 'opensmtpd/defaults.yaml' as defaults %}
+
+{% load_yaml as osmap %}
 default:
-    configdir: /etc/mail
-    pkg: opensmtpd
-    service: opensmtpd
+  configdir: /etc/mail
+  pkg: opensmtpd
+  service: opensmtpd
 FreeBSD:
     configdir: /usr/local/etc/mail
-    pkg: opensmtpd
     service: smtpd
 Debian:
     configdir: /etc
-    pkg: opensmtpd
-    service: opensmtpd
 RedHat:
     configdir: /etc/opensmtpd
-    pkg: opensmtpd
-    service: opensmtpd
 Arch:
     configdir: /etc/smtpd
-    pkg: opensmtpd
     service: smtpd
 {% endload %}
-{% set opensmtpd = salt['grains.filter_by'](rawmap, grain='os_family',
-        merge=salt['pillar.get']('opensmtpd:lookup')) %}
+
+{% set opensmtpd = salt['grains.filter_by'](
+    defaults,
+    merge=salt['grains.filter_by'](
+        osmap,
+        merge=salt['pillar.get']('opensmtpd'),
+        base='default',
+    ),
+) %}
+
+{{ opensmtpd }}
