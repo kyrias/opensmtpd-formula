@@ -20,7 +20,7 @@ Arch:
 {% endload %}
 
 {% set opensmtpd = salt['grains.filter_by'](
-    defaults,
+    default_settings,
     merge=salt['grains.filter_by'](
         osmap,
         grain='os_family',
