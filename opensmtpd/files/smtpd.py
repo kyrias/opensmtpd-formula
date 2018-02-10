@@ -38,6 +38,20 @@ def generate_tables(defaults):
     return lines
 
 
+def generate_limiters(defaults):
+    lines = []
+    limiters = __salt__['pilar.get']('opensmtpd:limiters')
+    if not limiters:
+        limiters = defaults['limiters']
+
+    for limiter in limiters.items():
+        line = 'limit {}'.format(table)
+        lines.append(line)
+
+    lines.append('')
+    return lines
+
+
 def generate_listeners(defaults):
     os.chdir('/var/cache/salt/minion/files/base/')
     lines = []
@@ -182,6 +196,7 @@ def run():
     lines = []
     lines.extend(generate_pkis(defaults))
     lines.extend(generate_tables(defaults))
+    lines.extend(generate_limiters(defaults))
     lines.extend(generate_listeners(defaults))
     lines.extend(generate_rules(defaults))
     return '\n'.join(lines)
