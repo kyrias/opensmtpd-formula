@@ -45,7 +45,7 @@ def generate_limiters(defaults):
         limiters = defaults['limiters']
 
     for limiter in limiters:
-        line = 'limit {}'.format(table)
+        line = 'limit {}'.format(limiter)
         lines.append(line)
 
     lines.append('')
