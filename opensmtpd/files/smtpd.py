@@ -42,7 +42,7 @@ def generate_limiters(defaults):
     lines = []
     limiters = __salt__['pillar.get']('opensmtpd:limiters')
     if not limiters:
-        limiters = defaults['limiters']
+        return []
 
     for limiter in limiters:
         line = 'limit {}'.format(limiter)
